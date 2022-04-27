@@ -1,18 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import cx from "classnames";
 
+import IconCheck from "./icons/IconCheck";
+import IconDelete from "./icons/IconDelete";
+
 const Todo = () => {
   const [todoItem, setTodoItem] = useState("");
-  const [items, setItems] = useState([
-    {
-      id: 1234,
-      message: "Buy Milk",
-      done: false,
-    },
-  ]);
+  const [items, setItems] = useState([]);
 
-  const handleAdd = () => {
+  const handleAdd = (e) => {
+    e.preventDefault();
     if (todoItem) {
       setItems([
         {
@@ -48,43 +46,79 @@ const Todo = () => {
   };
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold">Todo App</h1>
-
-      <div>
-        <input
-          type="text"
-          value={todoItem}
-          onChange={(e) => setTodoItem(e.target.value)}
-        />
-        <button type="button" onClick={() => handleAdd()}>
-          Add
-        </button>
+    <div className="h-[30rem] md:col-span-4 lg:col-span-4 mt-7">
+      <div className=" rounded-3xl p-10 bg-gray-700 bg-opacity-30 shadow-md w-3/4 h-full tracking-wide overflow-y-scroll no-scrollbar">
+        <form
+          onSubmit={handleAdd}
+          className="relative z-0 w-full mb-4 group"
+          label="Add todo"
+        >
+          <input
+            type="text"
+            name="floating_text"
+            className="block py-2 px-0 w-full text-gray-300 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-white dark:border-gray-100 dark:focus:border-gray-200 focus:outline-none focus:ring-0 focus:border-gray-200 peer"
+            placeholder=" "
+            value={todoItem}
+            onChange={(e) => setTodoItem(e.target.value)}
+            required
+          />
+          <label
+            for="floating_text"
+            className="peer-focus:font-medium absolute text-sm text-gray-100 dark:text-gray-200 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-200 peer-focus:dark:text-gray-200 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >
+            Add a task...
+          </label>
+        </form>
+        <div className="text-sm font-semibold tracking-wide text-white pb-2">
+          Not Completed
+        </div>
+        <ul>
+          {items
+            .filter(({ done }) => !done)
+            .map(({ id, message, done }) => (
+              <div className="text-gray-100 py-1.5 text-xs font-medium flex justify-between items-center">
+                <li
+                  key={id}
+                  className={`${cx("item", {
+                    done,
+                  })}`}
+                >
+                  {message}
+                </li>
+                <div className="flex gap-x-2">
+                  <button onClick={() => handleToggle(id)}>
+                    <IconCheck />
+                  </button>
+                  <button onClick={() => handleDelete(id)}>
+                    <IconDelete />
+                  </button>
+                </div>
+              </div>
+            ))}
+        </ul>
+        <div className="text-sm font-semibold tracking-wide text-white py-2">
+          Completed
+        </div>
+        <ul>
+          {items
+            .filter(({ done }) => done)
+            .map(({ id, message, done }) => (
+              <div className="text-gray-100 py-1.5 text-xs font-medium flex justify-between items-center">
+                <li key={id} className={cx("item", { done })}>
+                  {message}
+                </li>
+                <div className="flex gap-x-2">
+                  <button onClick={() => handleToggle(id)}>
+                    <IconCheck />
+                  </button>
+                  <button onClick={() => handleDelete(id)}>
+                    <IconDelete />
+                  </button>
+                </div>
+              </div>
+            ))}
+        </ul>
       </div>
-      <div className="text-lg font-bold">Not Completed</div>
-      <ul>
-        {items
-          .filter(({ done }) => !done)
-          .map(({ id, message, done }) => (
-            <li key={id} className={cx("item", { done })}>
-              <button onClick={() => handleToggle(id)}>DONE</button>
-              {message}
-              <button onClick={() => handleDelete(id)}>DELETE</button>
-            </li>
-          ))}
-      </ul>
-      <div className="text-lg font-bold">Completed</div>
-      <ul>
-        {items
-          .filter(({ done }) => done)
-          .map(({ id, message, done }) => (
-            <li key={id} className={cx("item", { done })}>
-              <button onClick={() => handleToggle(id)}>DONE</button>
-              {message}
-              <button onClick={() => handleDelete(id)}>DELETE</button>
-            </li>
-          ))}
-      </ul>
     </div>
   );
 };
