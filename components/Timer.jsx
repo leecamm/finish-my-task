@@ -10,9 +10,9 @@ const Timer = ({
   ticking,
   setTicking,
   reset,
+  setOpenSetting,
 }) => {
   const options = ["pomodoro", "short break", "long break"];
-
   return (
     <div>
       <div className="flex justify-between">
@@ -36,7 +36,11 @@ const Timer = ({
         </h1>
       </div>
       <div className="flex justify-center items-center gap-x-6">
-        <button type="button" className="">
+        <button
+          type="button"
+          className=""
+          onClick={() => setOpenSetting((value) => !value)}
+        >
           <IconSetting />
         </button>
         <button
@@ -54,4 +58,4 @@ const Timer = ({
   );
 };
 
-export default Timer;
+export default React.memo(Timer);
