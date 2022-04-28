@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Alarm from "./Alarm";
+import ModalSetting from "./ModalSetting";
 import Timer from "./Timer";
 
 const Pomodoro = () => {
@@ -11,6 +12,22 @@ const Pomodoro = () => {
   const [stage, setStage] = useState(0);
   const [ticking, setTicking] = useState(false);
   const [consumedSecond, setConsumedSecond] = useState(0);
+
+  const [openSetting, setOpenSetting] = useState(false);
+
+  const alarmRef = useRef();
+  const pomodoroRef = useRef();
+  const shortBreakRef = useRef();
+  const longBreakRef = useRef();
+
+  const updateTimeDefaultValue = () => {
+    setPomodoro(pomodoroRef.current.value);
+    setShortBreak(shortBreakRef.current.value);
+    setLongBreak(longBreakRef.current.value);
+    setOpenSetting(false);
+    setSecond(0);
+    setConsumedSecond(0);
+  };
 
   const switchStage = (index) => {
     const isYes =
@@ -46,10 +63,13 @@ const Pomodoro = () => {
   const reset = () => {
     setConsumedSecond(0);
     setTicking(false);
-    setPomodoro(25);
-    setShortBreak(5);
-    setLongBreak(15);
+    updateTimeDefaultValue();
     setSecond(0);
+  };
+
+  const timeUp = () => {
+    alarmRef.current.play();
+    reset();
   };
 
   const clockTicking = () => {
@@ -57,7 +77,7 @@ const Pomodoro = () => {
     const setMinutes = updateMinutes();
 
     if (minutes === 0 && seconds === 0) {
-      reset();
+      timeUp();
     } else if (seconds === 0) {
       setMinutes((minute) => minute - 1);
       setSecond(59);
@@ -65,6 +85,11 @@ const Pomodoro = () => {
       setSecond((second) => second - 1);
     }
   };
+
+  // const muteAlarm = () => {
+  //   alarmRef.current.pause();
+  //   alarmRef.current.currentTime = 0;
+  // };
 
   useEffect(() => {
     window.onbeforeunload = () => {
@@ -93,8 +118,18 @@ const Pomodoro = () => {
         ticking={ticking}
         setTicking={setTicking}
         reset={reset}
+        // muteAlarm={muteAlarm}
+        setOpenSetting={setOpenSetting}
       />
-      <Alarm />
+      <Alarm ref={alarmRef} />
+      <ModalSetting
+        openSetting={openSetting}
+        setOpenSetting={setOpenSetting}
+        pomodoroRef={pomodoroRef}
+        shortBreakRef={shortBreakRef}
+        longBreakRef={longBreakRef}
+        updateTimeDefaultValue={updateTimeDefaultValue}
+      />
     </div>
   );
 };

@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import Todo from "../components/Todo";
+import dynamic from "next/dynamic";
+
 import Header from "../components/Header";
 import Pomodoro from "../components/Pomodoro";
+
+const Todo = dynamic(() => import("../components/Todo"), { ssr: false });
 
 const Home = () => {
   return (
