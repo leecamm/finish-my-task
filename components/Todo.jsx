@@ -9,6 +9,17 @@ const Todo = () => {
   const [todoItem, setTodoItem] = useState("");
   const [items, setItems] = useState([]);
 
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
+
+  useEffect(() => {
+    const items = JSON.parse(localStorage.getItem("items"));
+    if (items) {
+      setItems(items);
+    }
+  }, []);
+
   const handleAdd = (e) => {
     e.preventDefault();
     if (todoItem) {
@@ -21,11 +32,9 @@ const Todo = () => {
         ...items,
       ]);
       setTodoItem("");
+      // saveData(todoItem);
     }
   };
-
-  console.log(items);
-
   const handleToggle = (id) => {
     const _items = items.map((item) => {
       if (item.id === id) {
@@ -43,6 +52,7 @@ const Todo = () => {
   const handleDelete = (id) => {
     const updatedTodo = [...items].filter((item) => item.id !== id);
     setItems(updatedTodo);
+    // saveData(updatedTodo);
   };
 
   return (
@@ -63,7 +73,7 @@ const Todo = () => {
             required
           />
           <label
-            for="floating_text"
+            htmlFor="floating_text"
             className="peer-focus:font-medium absolute text-sm text-gray-100 dark:text-gray-200 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-200 peer-focus:dark:text-gray-200 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
             Add a task...
@@ -103,7 +113,7 @@ const Todo = () => {
           {items
             .filter(({ done }) => done)
             .map(({ id, message, done }) => (
-              <div className="text-gray-100 py-1.5 text-xs font-medium flex justify-between items-center">
+              <div className="text-gray-200 py-1.5 text-xs font-medium flex justify-between items-center">
                 <li key={id} className={cx("item", { done })}>
                   {message}
                 </li>

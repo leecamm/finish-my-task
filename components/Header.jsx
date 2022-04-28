@@ -13,7 +13,7 @@ const Header = () => {
           <p className="font-medium text-white">contact</p>
         </a>
       </div>
-      <div className="">
+      <div className="cursor-pointer">
         <Image src={logo} alt="logo" width={318} height={106} />
       </div>
     </div>
