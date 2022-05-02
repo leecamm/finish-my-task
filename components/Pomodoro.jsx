@@ -68,6 +68,24 @@ const Pomodoro = () => {
   };
 
   const timeUp = () => {
+    // let i = 0;
+    // while (i < 4) {
+    //   console.log("running while loop");
+    //   if (stage === 0) {
+    //     setStage(1);
+    //     alarmRef.current.play();
+    //     reset();
+    //   } else if (stage === 1) {
+    //     setStage(0);
+    //     alarmRef.current.play();
+    //     reset();
+    //   }
+    //   if (i === 3) {
+    //     console.log(i);
+    //     break;
+    //   }
+    // }
+
     alarmRef.current.play();
     reset();
   };
@@ -109,7 +127,7 @@ const Pomodoro = () => {
   }, [seconds, pomodoro, shortBreak, longBreak, ticking]);
 
   return (
-    <div className="md:col-start-5 md:col-span-4 lg:col-start-6 lg:col-span-5 bg-gray-500">
+    <div className="md:col-start-5 md:col-span-4 lg:col-start-6 lg:col-span-5">
       <Timer
         stage={stage}
         switchStage={switchStage}

@@ -58,6 +58,7 @@ const ModalSetting = ({
                 <input
                   defaultValue={input.defaultValue}
                   type="number"
+                  min="0"
                   className="w-full text-gray-50 bg-gray-200 bg-opacity-30 py-2 rounded-full text-left pl-4 pr-2 border-2 border-gray-200 hover:bg-gray-500"
                   ref={input.ref}
                 />
