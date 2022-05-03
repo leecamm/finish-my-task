@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
+
 import Alarm from "./Alarm";
 import AudioPlayer from "./AudioPlayer";
 import ModalSetting from "./ModalSetting";
 import Timer from "./Timer";
+import tracks from "../components/audio/tracks";
 
 const Pomodoro = () => {
   const [pomodoro, setPomodoro] = useState(25);
@@ -149,7 +151,7 @@ const Pomodoro = () => {
         longBreakRef={longBreakRef}
         updateTimeDefaultValue={updateTimeDefaultValue}
       />
-      <AudioPlayer />
+      <AudioPlayer tracks={tracks} />
     </div>
   );
 };
