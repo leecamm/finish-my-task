@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import Alarm from "./Alarm";
+import AudioPlayer from "./AudioPlayer";
 import ModalSetting from "./ModalSetting";
 import Timer from "./Timer";
 
@@ -127,7 +128,7 @@ const Pomodoro = () => {
   }, [seconds, pomodoro, shortBreak, longBreak, ticking]);
 
   return (
-    <div className="md:col-start-5 md:col-span-4 lg:col-start-6 lg:col-span-5">
+    <div className="md:col-start-5 md:col-span-4 lg:col-start-6 lg:col-span-5 ">
       <Timer
         stage={stage}
         switchStage={switchStage}
@@ -148,6 +149,7 @@ const Pomodoro = () => {
         longBreakRef={longBreakRef}
         updateTimeDefaultValue={updateTimeDefaultValue}
       />
+      <AudioPlayer />
     </div>
   );
 };
