@@ -18,6 +18,16 @@ const AudioPlayer = () => {
       title: "rainy weather",
       src: "https://actions.google.com/sounds/v1/weather/light_rain.ogg",
     },
+    {
+      value: "turning pages",
+      title: "turning pages",
+      src: "https://actions.google.com/sounds/v1/foley/flipping_newspaper_pages.ogg",
+    },
+    {
+      value: "bonfire",
+      title: "bonfire",
+      src: "https://actions.google.com/sounds/v1/ambiences/daytime_forrest_bonfire.ogg",
+    },
   ];
   const [selectedTrack, setSelectedTrack] = useState("");
 
@@ -92,7 +102,7 @@ const AudioPlayer = () => {
         <select
           onChange={handleSelected}
           defaultValue={"default"}
-          className="bg-gray-700 bg-opacity-0 text-gray-50 w-36"
+          className="bg-gray-700 bg-opacity-0 text-white w-36"
         >
           <option
             value={"default"}
@@ -129,6 +139,7 @@ const AudioPlayer = () => {
           defaultValue="0"
           ref={progressBar}
           onChange={changeRange}
+          className="h-1.5 "
         />
       </div>
       <div className="flex items-center gap-4">
@@ -143,6 +154,7 @@ const AudioPlayer = () => {
           step={0.01}
           ref={progressVolume}
           onChange={changeVolume}
+          className="h-1.5 "
         />
       </div>
     </div>
