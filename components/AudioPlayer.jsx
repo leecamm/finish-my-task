@@ -2,8 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 
 import IconPlay from "./icons/IconPlay";
 import IconPause from "./icons/IconPause";
-import IconList from "./icons/IconList";
+import IconList from "./icons/IconMusic";
 import IconVolume from "./icons/IconVolume";
+import IconMute from "./icons/IconMute";
 
 const AudioPlayer = () => {
   const tracks = [
@@ -21,12 +22,14 @@ const AudioPlayer = () => {
   const [selectedTrack, setSelectedTrack] = useState("");
 
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMute, setIsMute] = useState(false);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
 
   const audioPlayer = useRef();
   const progressBar = useRef();
   const animationRef = useRef();
+  const progressVolume = useRef();
 
   const handleSelected = (e) => {
     setSelectedTrack(JSON.parse(e.target.value));
@@ -34,14 +37,15 @@ const AudioPlayer = () => {
     setIsPlaying(false);
   };
 
-  const calculateTime = (secs) => {
-    const minutes = Math.floor(secs / 60);
-    const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-    const seconds = Math.floor(secs % 60);
-    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+  //   Use when want to show the time of the songs
+  //   const calculateTime = (secs) => {
+  //     const minutes = Math.floor(secs / 60);
+  //     const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+  //     const seconds = Math.floor(secs % 60);
+  //     const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
 
-    return `${returnedMinutes}:${returnedSeconds}`;
-  };
+  //     return `${returnedMinutes}:${returnedSeconds}`;
+  //   };
 
   useEffect(() => {
     const seconds = Math.floor(audioPlayer.current.duration);
@@ -61,6 +65,11 @@ const AudioPlayer = () => {
     }
   };
 
+  const toggleMute = () => {
+    audioPlayer.current.muted = !audioPlayer.current.muted;
+    setIsMute(!isMute);
+  };
+
   const whilePlaying = () => {
     progressBar.current.value = audioPlayer.current.currentTime;
     setCurrentTime(progressBar.current.value);
@@ -72,29 +81,46 @@ const AudioPlayer = () => {
     setCurrentTime(progressBar.current.value);
   };
 
+  const changeVolume = () => {
+    audioPlayer.current.volume = progressVolume.current.value;
+  };
+
   return (
-    <div className="md:col-start-5 md:col-span-4 lg:col-start-6 lg:col-span-5">
-      <h1>THIS IS AUDIO PLAYER</h1>
-      <div className="flex gap-5">
+    <div className="md:col-start-5 md:col-span-4 lg:col-start-6 lg:col-span-5 mt-20 space-y-2">
+      <div className="flex gap-4 items-center">
         <IconList />
-        <select onChange={handleSelected}>
-          <option disabled>Select a track</option>
+        <select
+          onChange={handleSelected}
+          defaultValue={"default"}
+          className="bg-gray-700 bg-opacity-0 text-gray-50 w-36"
+        >
+          <option
+            value={"default"}
+            disabled
+            className="bg-gray-200 bg-opacity-30 text-gray-400"
+          >
+            Select a track
+          </option>
           {tracks.map((track) => (
-            <option key={track.value} value={JSON.stringify(track)}>
+            <option
+              key={track.value}
+              value={JSON.stringify(track)}
+              className="bg-gray-200 bg-opacity-50 text-gray-900"
+            >
               {track.title}
             </option>
           ))}
         </select>
-        <p>{selectedTrack.title}</p>
         <audio
           ref={audioPlayer}
           src={selectedTrack.src}
           preload="true"
           loop
+          volume="true"
         ></audio>
       </div>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-4">
         <button onClick={togglePlayPause}>
           {isPlaying ? <IconPause /> : <IconPlay />}
         </button>
@@ -105,7 +131,20 @@ const AudioPlayer = () => {
           onChange={changeRange}
         />
       </div>
-      <IconVolume />
+      <div className="flex items-center gap-4">
+        <button onClick={toggleMute}>
+          {isMute ? <IconMute /> : <IconVolume />}
+        </button>
+        <input
+          type="range"
+          defaultValue="0.5"
+          min={0}
+          max={1}
+          step={0.01}
+          ref={progressVolume}
+          onChange={changeVolume}
+        />
+      </div>
     </div>
   );
 };
