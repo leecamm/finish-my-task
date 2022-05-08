@@ -102,7 +102,7 @@ const AudioPlayer = () => {
         <select
           onChange={handleSelected}
           defaultValue={"default"}
-          className="bg-gray-700 bg-opacity-0 text-white w-36"
+          className="bg-gray-700 bg-opacity-0 text-white w-36 cursor-pointer"
         >
           <option
             value={"default"}

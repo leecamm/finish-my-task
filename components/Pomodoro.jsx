@@ -4,8 +4,9 @@ import Alarm from "./Alarm";
 import ModalSetting from "./ModalSetting";
 import Timer from "./Timer";
 import AudioPlayer from "./AudioPlayer";
+import ChangeBackground from "./ChangeBackground";
 
-const Pomodoro = () => {
+const Pomodoro = ({ handleSelectedImg }) => {
   const [pomodoro, setPomodoro] = useState(25);
   const [shortBreak, setShortBreak] = useState(5);
   const [longBreak, setLongBreak] = useState(15);
@@ -82,12 +83,33 @@ const Pomodoro = () => {
     //     alarmRef.current.play();
     //     reset();
     //   }
-    //   if (i === 3) {
-    //     console.log(i);
-    //     break;
-    //   }
+    //   console.log("i inside while loop: " + i);
+    //   i++;
+    //   if (i === 3) break;
     // }
+    // if (stage === 0) {
+    //   setStage(2);
+    //   alarmRef.current.play();
+    //   reset();
+    // }
+    // console.log("i outside while loop:  " + i);
 
+    // alarmRef.current.play();
+    // reset();
+    // if (i < 2) {
+    //   if (stage === 0) {
+    //     setStage(1);
+    //     alarmRef.current.play();
+    //     reset();
+    //   } else if (stage === 1) {
+    //     setStage(0);
+    //     alarmRef.current.play();
+    //     reset();
+    //   }
+    //   console.log(i);
+    // } else {
+    //   console.log("time to long break");
+    // }
     alarmRef.current.play();
     reset();
   };
@@ -115,7 +137,6 @@ const Pomodoro = () => {
     window.onbeforeunload = () => {
       return consumedSecond ? "show warning" : null;
     };
-
     const timer = setInterval(() => {
       if (ticking) {
         setConsumedSecond((value) => value + 1);
@@ -150,7 +171,10 @@ const Pomodoro = () => {
         longBreakRef={longBreakRef}
         updateTimeDefaultValue={updateTimeDefaultValue}
       />
-      <AudioPlayer />
+      <div className="flex justify-between items-center">
+        <AudioPlayer />
+        <ChangeBackground handleSelected={handleSelectedImg} />
+      </div>
     </div>
   );
 };
