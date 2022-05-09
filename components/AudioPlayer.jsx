@@ -125,7 +125,7 @@ const AudioPlayer = () => {
           ref={audioPlayer}
           src={selectedTrack.src}
           preload="true"
-          autoPlay={false}
+          playsInline={true}
           loop
           volume="true"
         ></audio>
