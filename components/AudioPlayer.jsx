@@ -106,7 +106,7 @@ const AudioPlayer = () => {
         >
           <option
             value={"default"}
-            disabled
+            disabled={true}
             className="bg-gray-200 bg-opacity-30 text-gray-400"
           >
             Select a track
@@ -125,6 +125,7 @@ const AudioPlayer = () => {
           ref={audioPlayer}
           src={selectedTrack.src}
           preload="true"
+          autoPlay={true}
           loop
           volume="true"
         ></audio>
