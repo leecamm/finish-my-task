@@ -15,7 +15,7 @@ const Timer = ({
   const options = ["pomodoro", "short break", "long break"];
   return (
     <div>
-      <div className="flex justify-between">
+      <div className="flex justify-between gap-2 md:gap-0">
         {options.map((option, index) => {
           return (
             <button
@@ -23,7 +23,7 @@ const Timer = ({
               onClick={() => switchStage(index)}
               className={`${
                 index === stage ? "text-gray-900 bg-gray-100" : ""
-              } w-40 h-11 border-2 rounded-full font-semibold tracking-wide text-white  hover:text-gray-900 hover:bg-gray-100 active:text-gray-900 active:bg-gray-100`}
+              } w-36 md:w-40 h-11 border-2 rounded-full font-semibold text-sm md:text-base tracking-wide text-white  hover:text-gray-900 hover:bg-gray-100 active:text-gray-900 active:bg-gray-100`}
             >
               {option}
             </button>

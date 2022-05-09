@@ -5,7 +5,7 @@ import cx from "classnames";
 import IconCheck from "./icons/IconCheck";
 import IconDelete from "./icons/IconDelete";
 
-const Todo = () => {
+const Todo = ({ className }) => {
   const [todoItem, setTodoItem] = useState("");
   const [items, setItems] = useState(localStorage.getItem("todoItems") || []);
 
@@ -56,8 +56,10 @@ const Todo = () => {
   };
 
   return (
-    <div className="h-[30rem] md:col-span-4 lg:col-span-4 mt-7">
-      <div className=" rounded-3xl p-10 bg-gray-700 bg-opacity-30 shadow-md w-3/4 h-full tracking-wide overflow-y-scroll no-scrollbar">
+    <div
+      className={`h-[30rem] md:col-span-4 lg:col-span-4 my-5 md:mb-0 md:mt-7 flex justify-center md:justify-start ${className}`}
+    >
+      <div className=" rounded-3xl p-10 bg-gray-700 bg-opacity-30 shadow-md w-4/5 md:w-3/4 h-full tracking-wide overflow-y-scroll no-scrollbar">
         <form
           onSubmit={handleAdd}
           className="relative z-0 w-full mb-4 group"

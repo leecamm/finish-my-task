@@ -6,7 +6,7 @@ import Timer from "./Timer";
 import AudioPlayer from "./AudioPlayer";
 import ChangeBackground from "./ChangeBackground";
 
-const Pomodoro = ({ handleSelectedImg }) => {
+const Pomodoro = ({ handleSelectedImg, className }) => {
   const [pomodoro, setPomodoro] = useState(25);
   const [shortBreak, setShortBreak] = useState(5);
   const [longBreak, setLongBreak] = useState(15);
@@ -150,7 +150,9 @@ const Pomodoro = ({ handleSelectedImg }) => {
   }, [seconds, pomodoro, shortBreak, longBreak, ticking]);
 
   return (
-    <div className="md:col-start-5 md:col-span-4 lg:col-start-6 lg:col-span-5 ">
+    <div
+      className={`md:col-start-5 md:col-span-4 lg:col-start-6 lg:col-span-5 mb-10 ${className}`}
+    >
       <Timer
         stage={stage}
         switchStage={switchStage}

@@ -16,8 +16,8 @@ const Home = () => {
     },
   ];
   const baseStyle = {
-    width: "100vw",
-    height: "100vh",
+    minWidth: "100vw",
+    minHeight: "100vh",
   };
 
   const [selectedImg, setSelectedImg] = useState(css[0]);
@@ -26,25 +26,19 @@ const Home = () => {
   };
 
   return (
-    <div className="px-36" style={{ ...baseStyle, ...selectedImg }}>
+    <div className="px-5 lg:px-36 bg" style={{ ...baseStyle, ...selectedImg }}>
       <Head>
         <title>Finish My Task</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
       <div className="grid grid-cols-1 md:grid-cols-8 lg:grid-cols-10 gap-2 md:gap-6 lg:gap-10">
-        <Todo />
-        <Pomodoro handleSelectedImg={handleSelected} />
+        <Todo className="order-2 md:order-1" />
+        <Pomodoro
+          handleSelectedImg={handleSelected}
+          className="order-1 md:order-2"
+        />
       </div>
-      {/* <div>
-        <select onChange={handleSelected}>
-          {css.map((item) => (
-            <option key={item.title} value={JSON.stringify(item)}>
-              {item.title}
-            </option>
-          ))}
-        </select>
-      </div> */}
     </div>
   );
 };

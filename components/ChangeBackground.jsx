@@ -25,10 +25,10 @@ const ChangeBackground = ({ handleSelected }) => {
   ];
   return (
     <div className="flex flex-col pt-10">
-      <p className="font-semibold text-lg text-gray-50">theme</p>
+      <p className="font-semibold md:text-lg text-gray-50">theme</p>
       <select
         onChange={handleSelected}
-        className="w-36 h-10 border-2 bg-gray-100 bg-opacity-0 text-white mt-2 rounded-full pl-2 border-white hover:border-gray-100 cursor-pointer"
+        className="w-32 md:w-36 h-10 border-2 bg-gray-100 bg-opacity-0 text-white mt-2 rounded-full pl-2 border-white hover:border-gray-100 cursor-pointer"
       >
         {css.map((item) => (
           <option
