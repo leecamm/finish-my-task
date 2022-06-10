@@ -7,7 +7,9 @@ import IconDelete from "./icons/IconDelete";
 
 const Todo = ({ className }) => {
   const [todoItem, setTodoItem] = useState("");
-  const [items, setItems] = useState(localStorage.getItem("todoItems") || []);
+  const [items, setItems] = useState(
+    JSON.parse(localStorage.getItem("items")) || []
+  );
 
   useEffect(() => {
     localStorage.setItem("items", JSON.stringify(items));
