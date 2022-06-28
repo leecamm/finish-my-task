@@ -35,11 +35,7 @@ const ModalContact = ({ openContact, setOpenContact }) => {
           </div>
         </div>
         <div className="text-gray-100 flex justify-between items-center font-semibold mt-6">
-          <h1>Let's have a talk!</h1>
-        </div>
-        <div className="h-0.5 w-full bg-gray-300 my-4"></div>
-        <div className="flex gap-5">
-          <div className="w-full text-gray-200">
+          <h1>
             Finish my task - made by{" "}
             <a
               href="https://github.com/leecamm"
@@ -49,10 +45,11 @@ const ModalContact = ({ openContact, setOpenContact }) => {
             >
               Harry Le
             </a>
-          </div>
+          </h1>
         </div>
+        <div className="h-0.5 w-full bg-gray-300 my-4"></div>
         <div className="flex gap-5">
-          <div className="w-full text-gray-200 mt-2">
+          <div className="w-full text-gray-200">
             If you find the website useful, please consider donating to me via:
           </div>
         </div>
