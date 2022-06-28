@@ -30,6 +30,10 @@ const Home = () => {
       <Head>
         <title>Finish My Task</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="google-site-verification"
+          content="wX2DyPnwhuvTsvcpy1zhyy42l2KXNTx1SbhjXpM7Ufk"
+        />
       </Head>
       <Header />
       <div className="grid grid-cols-1 md:grid-cols-8 lg:grid-cols-10 gap-2 md:gap-6 lg:gap-10">
