@@ -4,10 +4,12 @@ import { default as logo } from "../public/static/logo.svg";
 
 import ModalAbout from "./ModalAbout";
 import ModalQuestion from "./ModalQuestion";
+import ModalContact from "./ModalContact";
 import IconQuestion from "./icons/IconQuestion";
 
 const Header = () => {
   const [openAbout, setOpenAbout] = useState(false);
+  const [openContact, setOpenContact] = useState(false);
   const [openQuestion, setOpenQuestion] = useState(false);
   return (
     <div className="">
@@ -17,7 +19,7 @@ const Header = () => {
             about
           </p>
         </a>
-        <a href="#contact">
+        <a onClick={() => setOpenContact((value) => !value)}>
           <p className="font-medium text-white text-sm md:text-base cursor-pointer">
             contact
           </p>
@@ -37,6 +39,7 @@ const Header = () => {
         openQuestion={openQuestion}
         setOpenQuestion={setOpenQuestion}
       />
+      <ModalContact openContact={openContact} setOpenContact={setOpenContact} />
     </div>
   );
 };

@@ -13,9 +13,9 @@ const ChangeBackground = ({ handleSelected }) => {
       backgroundImage: `url("https://i.imgur.com/fR3mm1b.png")`,
     },
     {
-      title: "spirited away",
-      value: "spirited away",
-      backgroundImage: `url("https://i.pinimg.com/originals/0f/c3/66/0fc366d67d9a75839731d9efd9a3eb3a.jpg")`,
+      title: "lofi girl",
+      value: "lofi girl",
+      backgroundImage: `url("https://i.redd.it/ot73w0kpfa851.png")`,
     },
     {
       title: "ponyo",
