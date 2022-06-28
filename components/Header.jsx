@@ -3,10 +3,12 @@ import Image from "next/image";
 import { default as logo } from "../public/static/logo.svg";
 
 import ModalAbout from "./ModalAbout";
+import ModalQuestion from "./ModalQuestion";
 import IconQuestion from "./icons/IconQuestion";
 
 const Header = () => {
   const [openAbout, setOpenAbout] = useState(false);
+  const [openQuestion, setOpenQuestion] = useState(false);
   return (
     <div className="">
       <div className="flex gap-x-5 md:justify-end items-center pt-5 justify-center">
@@ -16,10 +18,12 @@ const Header = () => {
           </p>
         </a>
         <a href="#contact">
-          <p className="font-medium text-white text-sm md:text-base">contact</p>
+          <p className="font-medium text-white text-sm md:text-base cursor-pointer">
+            contact
+          </p>
         </a>
-        <a href="#contact">
-          <p className="font-medium text-white text-sm md:text-base">
+        <a onClick={() => setOpenQuestion((value) => !value)}>
+          <p className="font-medium text-white text-sm md:text-base cursor-pointer">
             <IconQuestion />
           </p>
         </a>
@@ -29,6 +33,10 @@ const Header = () => {
       </div>
 
       <ModalAbout openAbout={openAbout} setOpenAbout={setOpenAbout} />
+      <ModalQuestion
+        openQuestion={openQuestion}
+        setOpenQuestion={setOpenQuestion}
+      />
     </div>
   );
 };
