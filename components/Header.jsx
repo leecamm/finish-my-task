@@ -14,21 +14,21 @@ const Header = () => {
   return (
     <div className="">
       <div className="flex gap-x-5 md:justify-end items-center pt-5 justify-center">
-        <a onClick={() => setOpenAbout((value) => !value)}>
+        <div onClick={() => setOpenAbout((value) => !value)}>
           <p className="font-medium text-white text-sm md:text-base cursor-pointer">
             about
           </p>
-        </a>
-        <a onClick={() => setOpenContact((value) => !value)}>
+        </div>
+        <div onClick={() => setOpenContact((value) => !value)}>
           <p className="font-medium text-white text-sm md:text-base cursor-pointer">
             contact
           </p>
-        </a>
-        <a onClick={() => setOpenQuestion((value) => !value)}>
+        </div>
+        <div onClick={() => setOpenQuestion((value) => !value)}>
           <p className="font-medium text-white text-sm md:text-base cursor-pointer">
             <IconQuestion />
           </p>
-        </a>
+        </div>
       </div>
       <div className="cursor-pointer logo flex justify-center mx-auto mt-5 mb-14 md:m-0">
         <Image src={logo} alt="logo" />
