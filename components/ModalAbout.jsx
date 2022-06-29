@@ -62,8 +62,7 @@ const ModalAbout = ({ openAbout, setOpenAbout }) => {
             desktop and mobile browsers. This website can help you to stay
             focused on any task you are working on, such as studying, writing,
             or coding. You can add tasks, play ambient sounds, and change the
-            website background to bring you the most comfortable working
-            environment.
+            website background to create the most pleasant working environment.
           </div>
         </div>
         <div className="text-gray-100 flex justify-between items-center font-semibold mt-6">
