@@ -19,7 +19,7 @@ const ModalContact = ({ openContact, setOpenContact }) => {
         }}
       >
         <div className="text-gray-100 flex justify-between items-center font-semibold">
-          <h1>Contact Us</h1>
+          <h2>Contact Us</h2>
           <button type="button" onClick={() => setOpenContact(false)}>
             <IconClose />
           </button>
@@ -35,7 +35,7 @@ const ModalContact = ({ openContact, setOpenContact }) => {
           </div>
         </div>
         <div className="text-gray-100 flex justify-between items-center font-semibold mt-6">
-          <h1>
+          <h2>
             Finish my task - made by{" "}
             <a
               href="https://github.com/leecamm"
@@ -45,7 +45,7 @@ const ModalContact = ({ openContact, setOpenContact }) => {
             >
               Harry Le
             </a>
-          </h1>
+          </h2>
         </div>
         <div className="h-0.5 w-full bg-gray-300 my-4"></div>
         <div className="flex gap-5">

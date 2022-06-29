@@ -19,7 +19,7 @@ const ModalAbout = ({ openAbout, setOpenAbout }) => {
         }}
       >
         <div className="text-gray-100 flex justify-between items-center font-semibold">
-          <h1>What is Pomodoro technique?</h1>
+          <h2>What is Pomodoro technique?</h2>
           <button type="button" onClick={() => setOpenAbout(false)}>
             <IconClose />
           </button>
@@ -53,7 +53,7 @@ const ModalAbout = ({ openAbout, setOpenAbout }) => {
           </div>
         </div>
         <div className="text-gray-100 flex justify-between items-center font-semibold mt-6">
-          <h1>What is Finish my task website?</h1>
+          <h2>What is Finish my task website?</h2>
         </div>
         <div className="h-0.5 w-full bg-gray-300 my-4"></div>
         <div className="flex gap-5">
@@ -66,7 +66,7 @@ const ModalAbout = ({ openAbout, setOpenAbout }) => {
           </div>
         </div>
         <div className="text-gray-100 flex justify-between items-center font-semibold mt-6">
-          <h1>Features</h1>
+          <h2>Features</h2>
         </div>
         <div className="h-0.5 w-full bg-gray-300 my-4"></div>
         <div className="flex gap-5">

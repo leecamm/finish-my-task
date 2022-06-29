@@ -44,7 +44,7 @@ const ModalSetting = ({
         }}
       >
         <div className="text-gray-200 flex justify-between items-center font-semibold">
-          <h1>Time setting</h1>
+          <h2>Time setting</h2>
           <button type="button" onClick={() => setOpenSetting(false)}>
             <IconClose />
           </button>
@@ -54,7 +54,7 @@ const ModalSetting = ({
           {inputs.map((input, index) => {
             return (
               <div key={index}>
-                <h1 className="text-gray-200 text-sm mb-2">{input.value}</h1>
+                <h2 className="text-gray-200 text-sm mb-2">{input.value}</h2>
                 <input
                   defaultValue={input.defaultValue}
                   type="number"

@@ -19,7 +19,7 @@ const ModalQuestion = ({ openQuestion, setOpenQuestion }) => {
         }}
       >
         <div className="text-gray-100 flex justify-between items-center font-semibold">
-          <h1>How to use the Pomodoro Timer?</h1>
+          <h2>How to use the Pomodoro Timer?</h2>
           <button type="button" onClick={() => setOpenQuestion(false)}>
             <IconClose />
           </button>
