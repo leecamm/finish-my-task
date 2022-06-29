@@ -38,6 +38,7 @@ const Timer = ({
       <div className="flex justify-center items-center gap-x-6">
         <button
           type="button"
+          aria-label="setting"
           className=""
           onClick={() => setOpenSetting((value) => !value)}
         >
@@ -45,12 +46,13 @@ const Timer = ({
         </button>
         <button
           type="button"
+          aria-label="ticking"
           className="px-[3.25rem] py-2 text-xl border-2 rounded-full bg-gray-100 shadow-md hover:bg-gray-200 font-semibold tracking-wide"
           onClick={() => setTicking((ticking) => !ticking)}
         >
           {ticking ? "stop" : "start"}
         </button>
-        <button type="button" className="" onClick={reset}>
+        <button type="button" className="" aria-label="reset" onClick={reset}>
           <IconReset />
         </button>
       </div>

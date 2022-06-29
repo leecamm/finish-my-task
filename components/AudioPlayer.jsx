@@ -131,7 +131,7 @@ const AudioPlayer = () => {
       </div>
 
       <div className="flex items-center gap-4">
-        <button onClick={togglePlayPause}>
+        <button onClick={togglePlayPause} aria-label="play-pause">
           {isPlaying ? <IconPause /> : <IconPlay />}
         </button>
         <input
@@ -143,7 +143,7 @@ const AudioPlayer = () => {
         />
       </div>
       <div className="flex items-center gap-4">
-        <button onClick={toggleMute}>
+        <button onClick={toggleMute} aria-label="mute">
           {isMute ? <IconMute /> : <IconVolume />}
         </button>
         <input
