@@ -42,6 +42,9 @@ const Home = () => {
           name="description"
           content="A customizable Pomodoro timer that works on desktop and mobile browsers. You can add tasks, play ambient sounds, and change the website background to create the most pleasant working environment."
         ></meta>
+        <meta property="og:title" content="Finish My Task" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://finishmytask.online" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
