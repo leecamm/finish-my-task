@@ -31,9 +31,9 @@ const Timer = ({
         })}
       </div>
       <div className="mt-14 mb-10">
-        <h1 className=" text-8xl lg:text-9xl font-bold select-none m-0 tracking-normal text-white items-center justify-center flex">
+        <h2 className=" text-8xl lg:text-9xl font-bold select-none m-0 tracking-normal text-white items-center justify-center flex">
           {getTickingTime()}:{seconds.toString().padStart(2, "0")}
-        </h1>
+        </h2>
       </div>
       <div className="flex justify-center items-center gap-x-6">
         <button

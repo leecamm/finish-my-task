@@ -31,7 +31,7 @@ const Header = () => {
         </div>
       </div>
       <div className="cursor-pointer logo flex justify-center mx-auto mt-5 mb-14 md:m-0">
-        <Image src={logo} alt="logo" />
+        <Image src={logo} alt="logo-finishmytask" />
       </div>
 
       <ModalAbout openAbout={openAbout} setOpenAbout={setOpenAbout} />

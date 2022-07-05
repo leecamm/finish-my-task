@@ -59,7 +59,10 @@ const ModalContact = ({ openContact, setOpenContact }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=harryle&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff" />
+            <img
+              src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=harryle&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff"
+              alt="buymeacoffee"
+            />
           </a>
         </div>
 
